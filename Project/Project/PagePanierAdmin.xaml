@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.PagePanierAdmin">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView x:Name="listeCommande">
+                <ListView.Header>
+                    <Grid>
+                        <Label Grid.Column="0" Text="ID" FontAttributes="Bold" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Text="Client" FontAttributes="Bold" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center"/>
+                        <Label Text="Ligne Commande"  Grid.Column="3" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Grid.Column="0" Text="{Binding Id}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                                <Label Grid.Column="1" Text="{Binding NomClient}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                                <Image Source="view.png" Grid.Column="3" Grid.ColumnSpan="2" WidthRequest="18" HeightRequest="18" HorizontalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="BtnAfficher_Clicked2"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--<Button Text="Test" Clicked="BtnAfficher_Clicked2"/>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

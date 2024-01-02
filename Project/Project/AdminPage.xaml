@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.AdminPage">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.RowSpan="1"  Grid.ColumnSpan="2" Source="admin.png"
+                   WidthRequest="150"
+                   HeightRequest="150"/>
+            
+            <Image Grid.Row="1" Grid.Column="0" Source="gestionProduit.png"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="CenterAndExpand"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="Product Management"
+                   FontSize="20" FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="toProductPage"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Image Grid.Row="2" Grid.Column="0" Source="gestionCategorie.png"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="CenterAndExpand"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="Category Management"
+                   FontSize="20"  FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="toCategoryPage"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+            <Image Grid.Row="3" Grid.Column="0" Source="gestionCommande.png"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="CenterAndExpand"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="Orders"
+                   FontSize="20"  FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="toCommandePage"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.ProductDetailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+            <Frame HasShadow="True" BorderColor="DarkGray" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" Padding="5" Margin="10">
+                    <Image Source="{Binding UrlImage}" Aspect="AspectFill" />
+            </Frame>
+                <StackLayout Margin="10,20,10,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Nom}" FontSize="Title" FontAttributes="Bold" TextColor="Black" />
+                        <Label Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding Prix, StringFormat='{0:C1}'}" FontSize="Subtitle" BackgroundColor="#001F3F" TextColor="White" Padding="8" LineBreakMode="NoWrap" />
+                </Grid>
+                <Label Text="{Binding Description}" FontSize="Subtitle" />
+            </StackLayout>
+            <StackLayout Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Orientation="Horizontal"
+                     Margin="10">
+                <Label Text="Quantity:"
+                   VerticalTextAlignment="Center" />
+                    <Label Text="1" x:Name="QuantityLabel"  VerticalTextAlignment="Center"/>
+                    <Button Text="-" VerticalOptions="Center"  WidthRequest="40" Clicked="Less"/>
+                    <Button Text="+" VerticalOptions="Center"  WidthRequest="40" Clicked="More"/>
+                </StackLayout>
+                <Button Text="Buy"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="10"
+                    BackgroundColor="#001F3F"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"
+                    WidthRequest="300"
+                        Clicked="Buy"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

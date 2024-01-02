@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.CategoriePage">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="  Filter" VerticalOptions="Center"/>
+            <Picker x:Name="categoryPicker" Title="Category" Grid.Column="1" SelectedIndexChanged="OnCategoryChanged"/>
+        </Grid>
+
+        <CollectionView x:Name="collectionView" ItemsLayout="VerticalGrid, 2" Margin="5" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="auto, 30, 30">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGridTapped" CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                        <Frame BorderColor="LightGray" Padding="3">
+                            <Image Source="{Binding UrlImage}" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200" HeightRequest="200"/>
+                        </Frame>
+                        <Label Grid.Row="1" Text="{Binding Nom}" TextColor="Black"/>
+                        <Label Grid.Row="2" Text="{Binding Prix, StringFormat='{0:C2}'}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

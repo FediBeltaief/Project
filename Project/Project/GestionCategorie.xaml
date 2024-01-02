@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Project.GestionCategorie">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                     Icon="addcategorie.png"
+                     Order="Primary"    
+                     Clicked="ToolbarItem_Clicked"
+                     Priority="1" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout  VerticalOptions="StartAndExpand" Padding="10">
+                <Label Text="Category List" FontSize="24" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <ListView x:Name="listeCategorie">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Grid.Column="0" Text="{Binding Id}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                                <Label Grid.ColumnSpan="6" Grid.Column="1" Text="{Binding Nom}" FontAttributes="Bold"  VerticalOptions="CenterAndExpand" />
+                            </Grid>
+                            <ViewCell.ContextActions>
+                                <!--<MenuItem x:Name="btnAjouter"
+                                              Text="Supprimer"
+                                              Clicked="BtnAjouter_Clicked"
+                                              CommandParameter="{Binding .}"/>-->
+                                <MenuItem x:Name="btnModifier"
+                                              Text="Update"
+                                              Clicked="BtnModifier_Clicked"
+                                              CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="btnDelete"
+                                              Text="Delete"
+                                              Clicked="BtnDelete_Clicked"
+                                              CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
