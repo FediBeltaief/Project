@@ -3,43 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.PagePanier">
     <ContentPage.Content>
-        <StackLayout>
+        <RefreshView x:Name="refreshView" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <StackLayout>
 
-            <ListView x:Name="panier">
+                <ListView x:Name="panier">
 
-                <ListView.Header>
-                    <Grid>
-                        <Label Grid.Column="0" Text="ID" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-                        <Label Grid.Column="1" Grid.ColumnSpan="2" Text="Product Name" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
-                        <Label Grid.Column="3" Text="Quantity" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
-                        <Label Grid.Column="4" Text="Total Price" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
-                        <Label Grid.Column="5" Text="Operation" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
-                    </Grid>
-                </ListView.Header>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Label Grid.Column="0" Text="{Binding IdProduit}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-                                <Label Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding NomProduit}" VerticalOptions="CenterAndExpand" />
-                                <Entry Grid.Column="3" Text="{Binding Quantite}"  VerticalOptions="CenterAndExpand"  TextChanged="QuantityTextChanged"  />
-                                <Label Grid.Column="4" Text="{Binding PrixTotale}" VerticalOptions="CenterAndExpand" />
-                                
+                    <ListView.Header>
+                        <Grid>
+                            <Label Grid.Column="0" Text="ID" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" Grid.ColumnSpan="2" Text="Product Name" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Column="3" Text="Quantity" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                            <Label Grid.Column="4" Text="Total Price" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                            <Label Grid.Column="5" Text="Operation" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Label Grid.Column="0" Text="{Binding IdProduit}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                                    <Label Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding NomProduit}" VerticalOptions="CenterAndExpand" />
+                                    <Entry Grid.Column="3" Text="{Binding Quantite}"  VerticalOptions="CenterAndExpand"  TextChanged="QuantityTextChanged"  />
+                                    <Label Grid.Column="4" Text="{Binding PrixTotale}" VerticalOptions="CenterAndExpand" />
 
-                                <Image Source="delete.png" Grid.Column="5" Grid.ColumnSpan="1" WidthRequest="18" HeightRequest="18" HorizontalOptions="CenterAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Deleted"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
 
-                                
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                
-            </ListView>
-            <Label x:Name="Total" 
+                                    <Image Source="delete.png" Grid.Column="5" Grid.ColumnSpan="1" WidthRequest="18" HeightRequest="18" HorizontalOptions="CenterAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Deleted"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                <Label x:Name="Total" 
        Text="" 
        HorizontalOptions="Center" 
        VerticalOptions="CenterAndExpand" 
@@ -47,14 +48,15 @@
        TextColor="DarkBlue" 
        FontAttributes="Bold"/>
 
-            <Button                 
+                <Button                 
                  VerticalOptions="StartAndExpand"
                 Text="Confirm order"
                 TextColor="White"
                 BackgroundColor="#001F3F"
                 Clicked="Confirm"
                 />
-        </StackLayout>
+            </StackLayout>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
 

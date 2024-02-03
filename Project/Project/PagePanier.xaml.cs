@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,24 +13,38 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PagePanier : ContentPage
     {
+
+
         public static ObservableCollection<ArticlePanier> Articles { get; set; } = new ObservableCollection<ArticlePanier>(Panier.Articles);
         private decimal totalPrice;
+        public ICommand RefreshCommand { get; set; }
+
+
+
+
         public PagePanier()
         {
             InitializeComponent();
+            /*foreach (var ap in Panier.Articles)
+            {
+                totalPrice = totalPrice + ap.PrixTotale;
+            }*/
+        }
+        protected override void OnAppearing()
+        {
+            totalPrice = 0;
             foreach (var ap in Panier.Articles)
             {
                 totalPrice = totalPrice + ap.PrixTotale;
             }
-        }
-        protected override void OnAppearing()
-        {
             panier.ItemsSource = Panier.Articles;
             Total.Text = "Total: " + totalPrice.ToString() + "$";
+            
         }
         private void QuantityTextChanged(object sender, TextChangedEventArgs e)
         {
             this.OnAppearing();
+            Console.Write("bruh");
         }
 
         private async void Deleted(object sender, EventArgs e)
@@ -84,16 +98,24 @@ namespace Project
             {
                 commande.LignesCommande = resultString;
 
-                commande.NomClient = "Test3";
+                string nom = await DisplayPromptAsync("Enter Name", "Enter client name:", "OK", "Cancel", "Default input");
 
-                int j = await App.Database.AjouterCommande(commande);
+                if (nom != null)
+                {
+                    commande.NomClient = nom;
 
-                //Console.WriteLine(j);
-                Panier.ViderPanier();
+                    int j = await App.Database.AjouterCommande(commande);
 
-                await DisplayAlert("", "Successful", "OK");
+                    Panier.ViderPanier();
+
+                    await DisplayAlert("", "Successful", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Failed", "Empty or canceled input!", "OK");
+                }
             }
-            else
+            else 
             {
                 await DisplayAlert("Failed", "Empty!", "OK");
             }

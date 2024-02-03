@@ -18,7 +18,6 @@ namespace Project
         }
         private void OnLogin(object sender, EventArgs e)
         {
-            // Add your authentication logic here
             string user = login.Text;
             string pass = password.Text;
 

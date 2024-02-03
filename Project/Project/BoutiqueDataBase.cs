@@ -13,9 +13,9 @@ public class BoutiqueDataBase
         _baseDeDonnees = new SQLiteAsyncConnection(dbPath);
         _baseDeDonnees.CreateTableAsync<Categorie>().Wait();
         _baseDeDonnees.CreateTableAsync<Produit>().Wait();
-        //_baseDeDonnees.DropTableAsync<LigneCommande>().Wait();
+       // _baseDeDonnees.DropTableAsync<LigneCommande>().Wait();
         _baseDeDonnees.CreateTableAsync<LigneCommande>().Wait();
-        //_baseDeDonnees.DropTableAsync<Commande>().Wait();
+       // _baseDeDonnees.DropTableAsync<Commande>().Wait();
         _baseDeDonnees.CreateTableAsync<Commande>().Wait();
     }
 
