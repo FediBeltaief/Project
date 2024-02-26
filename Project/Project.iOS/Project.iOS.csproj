@@ -133,4 +133,43 @@
       <Name>Project</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gestionCategorie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\moreinfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gestionProduit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gestionCommande.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\addproduct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\addcategorie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\admin.png" />
+  </ItemGroup>
 </Project>

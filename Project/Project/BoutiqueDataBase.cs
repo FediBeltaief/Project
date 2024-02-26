@@ -11,13 +11,25 @@ public class BoutiqueDataBase
     public BoutiqueDataBase(string dbPath)
     {
         _baseDeDonnees = new SQLiteAsyncConnection(dbPath);
+        //_baseDeDonnees.DropTableAsync<Admin>().Wait();
+        _baseDeDonnees.CreateTableAsync<Admin>().Wait();
+
+        //_baseDeDonnees.DropTableAsync<Categorie>().Wait();
+        //_baseDeDonnees.DropTableAsync<Produit>().Wait();
+
         _baseDeDonnees.CreateTableAsync<Categorie>().Wait();
         _baseDeDonnees.CreateTableAsync<Produit>().Wait();
-       // _baseDeDonnees.DropTableAsync<LigneCommande>().Wait();
+        //  _baseDeDonnees.DropTableAsync<LigneCommande>().Wait();
         _baseDeDonnees.CreateTableAsync<LigneCommande>().Wait();
-       // _baseDeDonnees.DropTableAsync<Commande>().Wait();
+        //  _baseDeDonnees.DropTableAsync<Commande>().Wait();
         _baseDeDonnees.CreateTableAsync<Commande>().Wait();
+        var adminCount = _baseDeDonnees.Table<Admin>().CountAsync().Result;
+        if (adminCount == 0)
+        {
+            _baseDeDonnees.InsertAsync(new Admin("admin", "admin")).Wait();
+        }
     }
+
 
     // Opérations sur les catégories
     public Task<List<Categorie>> ObtenirCategories()
@@ -33,11 +45,12 @@ public class BoutiqueDataBase
         }
         catch (Exception ex)
         {
+            Console.Write(ex);
             return null;
         }
     }
 
-    
+
 
     public Task<int> AjouterCategorieAsync(Categorie categorie)
     {
@@ -61,15 +74,24 @@ public class BoutiqueDataBase
             return _baseDeDonnees.InsertAsync(categorie);
         }
     }
-    public Task<int> SupprimerCategorie(int idCategorie)
+    public async Task<int> SupprimerCategorie(int idCategorie)
     {
-         return _baseDeDonnees.DeleteAsync<Categorie>(idCategorie);
+        var products = await _baseDeDonnees.Table<Produit>().Where(p => p.IdCategorie == idCategorie).ToListAsync();
+
+        if (products.Any())
+        {
+            return -1; 
+        }
+        else
+        {
+            return await _baseDeDonnees.DeleteAsync<Categorie>(idCategorie);
+        }
     }
 
-    
+
     public Task<List<Produit>> ObtenirProduits(int idCategorie)
     {
-        return _baseDeDonnees.Table<Produit>().Where(p => p.IdCategorie ==idCategorie).ToListAsync();
+        return _baseDeDonnees.Table<Produit>().Where(p => p.IdCategorie == idCategorie).ToListAsync();
     }
     /**/
     public Task<List<Produit>> ObtenirToutProduits()
@@ -86,7 +108,7 @@ public class BoutiqueDataBase
     }
     public Task<int> AjouterProduit(Produit produit)
     {
-        if(produit.Id != 0)
+        if (produit.Id != 0)
         {
             return _baseDeDonnees.UpdateAsync(produit);
         }
@@ -129,9 +151,9 @@ public class BoutiqueDataBase
 
     public Task<int> AjouterCommande(Commande commande)
     {
-        return  _baseDeDonnees.InsertAsync(commande);
+        return _baseDeDonnees.InsertAsync(commande);
     }
-    public  Task<List<Commande>> ObtenirToutCommande()
+    public Task<List<Commande>> ObtenirToutCommande()
     {
         return _baseDeDonnees.Table<Commande>().ToListAsync();
     }
@@ -144,6 +166,24 @@ public class BoutiqueDataBase
         var ligneCommandes = await _baseDeDonnees.Table<LigneCommande>().Where(l => ids.Contains(l.Id)).ToListAsync();
         return ligneCommandes;
     }
+    public void UpdateAdmin(Admin admin)
+    {
+          _baseDeDonnees.UpdateAsync(admin);
+    }
+    public async Task<Admin> getAdmin()
+    {
+        try
+        {
+            return await _baseDeDonnees.Table<Admin>().FirstOrDefaultAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            return null;
+        }
+    }
+
+
 
 
     /*

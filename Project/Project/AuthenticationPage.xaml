@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.AuthenticationPage">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                     Icon="moreinfo.png"
+                     Order="Primary"    
+                     Clicked="MoreInfo"
+                     Priority="1" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="20" VerticalOptions="StartAndExpand">
+            
             <Image Source="logo.png" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" HeightRequest="100"/>
 
             <Entry Placeholder="Username" x:Name="login" 
@@ -22,6 +29,18 @@
                    FontSize="16"/>
 
             <Button Text="Login" Clicked="OnLogin"  BackgroundColor="#001F3F" TextColor="White" FontSize="18" CornerRadius="8"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Consider changing your login information. You can manage your account settings on the "/>
+                        <Span Text="settings page" TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SettingsPageTapped"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

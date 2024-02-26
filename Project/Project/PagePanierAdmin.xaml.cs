@@ -148,7 +148,7 @@ namespace Project
             }
             catch (Exception ex)
             {
-                Console.WriteLine("wrong 2");
+                Console.WriteLine(ex);
             }
             await DisplayAlert("List de Produit Commandé ", msg, "OK");
 

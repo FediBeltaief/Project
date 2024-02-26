@@ -32,23 +32,32 @@ namespace Project
         private async void Btnadd_Clicked(Object sender, EventArgs e)
         {
             Categorie categorie = new Categorie();
-            if (txtId.Text == null)
+            if (txtNom.Text != null)
             {
+                if (txtId.Text == null)
                 {
-                    categorie.Nom = txtNom.Text;
-                };
+                    {
+                        categorie.Nom = txtNom.Text;
+                    };
+                }
+                else
+                {
+                    {
+                        categorie.Id = int.Parse(txtId.Text);
+                        categorie.Nom = txtNom.Text;
+                    };
+                }
+
+                await DisplayAlert("Done!", "Categorie Saved", "ok");
+                await App.Database.SaveCategorie(categorie);
+                await Navigation.PopAsync();
             }
             else
             {
-                {
-                    categorie.Id = int.Parse(txtId.Text);
-                    categorie.Nom = txtNom.Text;
-                };
+                await DisplayAlert ("Error", "Name can't be Empty", "Ok");
             }
-
-            DisplayAlert("Done!", "Categorie Saved", "ok");
-            await App.Database.SaveCategorie(categorie);
-
         }
+        
+
     }
 }

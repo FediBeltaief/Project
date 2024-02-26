@@ -36,7 +36,7 @@
                                           Clicked="BtnModifier_Clicked"
                                           CommandParameter="{Binding .}"/>
                                 <MenuItem x:Name="Delete"
-                                          Text="Supprimer"
+                                          Text="Delete"
                                           Clicked="BtnDelete_Clicked"
                                           CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>

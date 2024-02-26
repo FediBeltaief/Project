@@ -23,7 +23,7 @@
                                 <Grid>
                                     <Label Grid.Column="0" Text="{Binding IdProduit}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
                                     <Label Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding NomProduit}" VerticalOptions="CenterAndExpand" />
-                                    <Entry Grid.Column="3" Text="{Binding Quantite}"  VerticalOptions="CenterAndExpand"  TextChanged="QuantityTextChanged"  />
+                                    <Entry Grid.Column="3" Text="{Binding Quantite}" Keyboard="Numeric" VerticalOptions="CenterAndExpand"  TextChanged="QuantityTextChanged"  />
                                     <Label Grid.Column="4" Text="{Binding PrixTotale}" VerticalOptions="CenterAndExpand" />
 
 

@@ -47,7 +47,8 @@ namespace Project
         private async void Btnadd_Clicked(Object sender, EventArgs e)
         {
             Produit produit = new Produit();
-            
+            if(txtNom.Text !=null && txtDescription.Text!=null && txtPrix.Text!=null && txtURLimage.Text !=null)
+            { 
             if (txtId.Text == null)
             {
                 {
@@ -70,9 +71,14 @@ namespace Project
                 };
             }
 
-            DisplayAlert("Done!", "Product Saved", "ok");
+            await DisplayAlert("Done!", "Product Saved", "ok");
             await App.Database.AjouterProduit(produit);
-            
+            await Navigation.PopAsync();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Please fill in all the fields ", "Ok");
+            }
         }
         
     }

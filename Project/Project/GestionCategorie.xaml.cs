@@ -26,10 +26,19 @@ namespace Project
             var menuItem = sender as MenuItem;
             var categorie = menuItem.CommandParameter as Categorie;
             bool result = await DisplayAlert("Confirmation", "Do you want to proceed?", "No", "Yes");
-            if (result == false)//Yes hiya no w No hiya Yes 9lebthom 3al mandher
+            if (result == false)
             {
-                await App.Database.SupprimerCategorie(categorie.Id);
-                this.OnAppearing();
+                
+                int i= await App.Database.SupprimerCategorie(categorie.Id);
+                if(i==-1)
+                {
+                    await DisplayAlert("Error", "There is atleast a product associated with this category","Ok");
+                }
+                else
+                { 
+                    this.OnAppearing(); 
+                }
+               
             }
         }
 

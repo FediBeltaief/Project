@@ -8,11 +8,11 @@
                 <TableRoot>
                     <TableSection>
                         <EntryCell x:Name="txtId" Label="Id" IsEnabled="False"/>
-                        <EntryCell x:Name="txtNom" Label="Nom"/>
+                        <EntryCell x:Name="txtNom" Label="Name"/>
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="btnadd" Clicked="Btnadd_Clicked" Text="Enregistrer"  BackgroundColor="#001F3F"/>
+            <Button x:Name="btnadd" Clicked="Btnadd_Clicked" Text="Save" BackgroundColor="#001F3F" TextColor="White"/>
 
         </StackLayout>
     </ContentPage.Content>

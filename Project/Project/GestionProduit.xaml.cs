@@ -38,7 +38,7 @@ namespace Project
             var menuItem = sender as MenuItem;
             var produit = menuItem.CommandParameter as Produit;
             bool result = await DisplayAlert("Confirmation", "Do you want to proceed?", "No", "Yes");
-            if (result == false)//Yes hiya no w No hiya Yes 9lebthom 3al mandher
+            if (result == false)
             {
                 await App.Database.SupprimerProduit(produit);
                 this.OnAppearing();

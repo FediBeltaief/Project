@@ -9,17 +9,17 @@
                     <TableSection>
 
                         <EntryCell x:Name="txtId" Label="Id" IsEnabled="False"/>
-                        <EntryCell x:Name="txtNom" Label="Nom"/>
+                        <EntryCell x:Name="txtNom" Label="Name"/>
                         <EntryCell x:Name="txtDescription" Label="Description"/>
-                        <EntryCell x:Name="txtPrix" Label="Prix"/>
+                        <EntryCell x:Name="txtPrix" Keyboard="Numeric" Label="Price"/>
                         <EntryCell x:Name="txtURLimage" Label="URLImage"/>
                         <ViewCell>
-                            <Picker x:Name="categoryPicker" Title="Choisir Category" />
+                            <Picker x:Name="categoryPicker" Title="Choose Category" />
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="btnadd" Clicked="Btnadd_Clicked" Text="Enregistrer"/>
+            <Button x:Name="btnadd" Clicked="Btnadd_Clicked" Text="Save" BackgroundColor="#001F3F" TextColor="White"/>
 
         </StackLayout>
     </ContentPage.Content>
