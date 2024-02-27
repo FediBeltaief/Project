@@ -23,7 +23,7 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Column="1"
                  Grid.Row="2"
-                 Text="ISET Store"
+                 Text="ME-Store"
                  TextColor="White"
                  Style="{DynamicResource SubtitleStyle}"/>
                 </Grid>

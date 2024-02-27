@@ -41,19 +41,21 @@
 
                 </ListView>
                 <Label x:Name="Total" 
-       Text="" 
-       HorizontalOptions="Center" 
-       VerticalOptions="CenterAndExpand" 
-       FontSize="18" 
-       TextColor="DarkBlue" 
-       FontAttributes="Bold"/>
+                    Text="" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="CenterAndExpand" 
+                    FontSize="18" 
+                    TextColor="DarkBlue" 
+                    FontAttributes="Bold"/>
 
                 <Button                 
-                 VerticalOptions="StartAndExpand"
+                 VerticalOptions="CenterAndExpand"
                 Text="Confirm order"
                 TextColor="White"
                 BackgroundColor="#001F3F"
                 Clicked="Confirm"
+                Margin="20,20"
+                CornerRadius="10"
                 />
             </StackLayout>
         </RefreshView>
